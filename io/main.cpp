@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+
 int main(int, char**) {
     fstream file;
     file.open("cout.txt", ios::out);
