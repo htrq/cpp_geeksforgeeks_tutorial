@@ -12,11 +12,15 @@ int main(int, char**) {
     streambuf* streamBufferOfCout = cout.rdbuf();
     streambuf* streamBufferOfFile = file.rdbuf();
 
+    int age;
+    cout << "Enter your age: ";
+    cin >> age;
+
     cout.rdbuf(streamBufferOfFile);
-    cout << "this is written to the file" << endl;
+    cout << "this is written to the file\nand your entered age is: " << age << endl;
 
     cout.rdbuf(streamBufferOfCout);
-    cout << "this is written to the screen" << endl;
+    cout << "this is written to the screen\nand your entered age is: " << age << endl;
 
     return 0;
 }
