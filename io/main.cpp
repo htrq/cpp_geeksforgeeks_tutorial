@@ -6,19 +6,16 @@ using namespace std;
 int main(int, char**) {
     fstream file;
     file.open("cout.txt", ios::out);
-    string line;
 
-    streambuf* stream_buffer_cout = cout.rdbuf();
-    streambuf* stream_buffer_cin = cin.rdbuf();
+    streambuf* streamBufferOfCin = cin.rdbuf();
+    streambuf* streamBufferOfCout = cout.rdbuf();
+    streambuf* streamBufferOfFile = file.rdbuf();
 
-    streambuf* stream_buffer_file = file.rdbuf();
+    cout.rdbuf(streamBufferOfFile);
+    cout << "this is written to the file" << endl;
 
-    cout.rdbuf(stream_buffer_file);
-    cout << "The line written to the file" << endl;
+    cout.rdbuf(streamBufferOfCout);
+    cout << "this is written to the screen" << endl;
 
-    cout.rdbuf(stream_buffer_cout);
-    cout << "The line written to the file" << endl;
-    
-    file.close();
     return 0;
 }
